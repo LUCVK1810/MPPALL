@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+
+// Define a StatefulWidget
+class CounterWidget extends StatefulWidget {
+  @override
+  _CounterWidgetState createState() => _CounterWidgetState();
+}
+// Define the corresponding State class
+class _CounterWidgetState extends State<CounterWidget> {
+  int _counter = 0; // Initialize a counter variable
+  // Define a function to increment the counter
+  void _incrementCounter() {
+    setState(() {
+      // Use setState to update the state and trigger a UI rebuild
+      _counter++;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    // Build method returns the UI representation of the widget
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Counter Widget'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Counter: $_counter', // Display the current value of the counter
+              style: TextStyle(fontSize: 24.0),
+            ),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: _incrementCounter, // Call the function to increment the counter
+              child: Text('Increment'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+void main() {
+  runApp(MaterialApp(
+    home: CounterWidget(), // Render the CounterWidget as the root widget
+  ));
+}
